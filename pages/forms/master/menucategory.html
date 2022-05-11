@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="../../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../../plugins/sweetalert2/sweetalert2.min.css"/>
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed">
@@ -277,8 +278,15 @@
                                     <label>Menu Category Name</label>
                                     <div class="row">
                                         <input id="txtcategoryName" type="text" class="form-control col-md-6 mr-2"
-                                            placeholder="Menu Category Name">
-                                        <button id="btnsubmit" type="button" class="btn btn-primary">Submit</button>
+                                            placeholder="Menu Category Name"/>
+                                        <button id="btnsubmit" type="button" class="btn btn-primary mr-2">Add</button>
+                                        <button id="btnupdate" type="button" class="btn btn-warning">Update</button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" type="checkbox" id="chkIsactive" >
+                                            <label for="chkIsactive" class="custom-control-label">Active Menu</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
@@ -286,17 +294,13 @@
                                         <table id="dtMenuCat" class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>Menu Category ID</th>
+                                                    <th style="width: 10%;">Menu ID</th>
                                                     <th>Menu Category Name</th>
-                                                    <th></th>
+                                                    <th style="width: 10%;">Is Active</th>
+                                                    <th style="width: 10%;"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Rice</td>
-                                                    <td><button type="button" class="btn btn-warning">Edit</button></td>
-                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -332,6 +336,8 @@
     <!-- AdminLTE App -->
     <script src="../../../dist/js/adminlte.js"></script>
 
+    <script src="../../../plugins/sweetalert2/sweetalert2.min.js"></script>
+
     <!-- PAGE PLUGINS -->
     <!-- select2-->
     <script src="../../../plugins/select2/js/select2.full.min.js"></script>
@@ -343,8 +349,8 @@
     <script src="../../../dist/js/demo.js"></script>
 
     <!-- Custom Script-->
-    <script src="../../../dist/js/pages/menucategory.js"></script>
     <script src="../../../dist/js/common.js"></script>
+    <script src="../../../dist/js/pages/menucategory.js"></script>
 </body>
 
 </html>

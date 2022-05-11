@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
   <!-- datatable-->
   <link rel="stylesheet" href="../../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../../plugins/sweetalert2/sweetalert2.min.css"/>
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed">
@@ -262,32 +263,29 @@
             <div class="col-md-12">
               <!-- Category item content-->
               <div class="card">
-                <div class="card-body">
+                <div class="card-header">
                   <div class="form-group">
                     <label for="txtcatname">Category Name</label>
                     <div class="row">
                       <input id="txtcatname" type="text" class="form-control col-md-6 mr-2"
                         placeholder="Category Name" />
-                      <button id="btnsubmit" type="button" class="btn btn-primary">Submit</button>
+                      <button id="btnsubmit" type="button" class="btn btn-primary mr-2">Add</button>
+                      <button id="btnupdate" type="button" class="btn btn-warning">Update</button>
                     </div>
                   </div>
                 </div>
-                <div class="card-footer">
+                <div class="card-body">
                   <div class="table-responsive">
-                    <table id="table1" class="table table-bordered">
+                    <table id="tblCategory" class="sm table table-bordered">
                       <thead>
                         <tr>
-                          <th>Category ID</th>
+                          <th style="width: 10%">ID</th>
                           <th>Category Name</th>
-                          <th></th>
+                          <th style="width: 10%"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Meat</td>
-                          <td><button type="button" class="btn btn-warning">Edit</button></td>
-                        </tr>
+                       
                       </tbody>
                     </table>
                   </div>
@@ -323,6 +321,8 @@
   <!-- AdminLTE App -->
   <script src="../../../dist/js/adminlte.js"></script>
 
+  <script src="../../../plugins/sweetalert2/sweetalert2.min.js"></script>
+
   <!-- PAGE PLUGINS -->
   <!-- jQuery Mapael -->
   <script src="../../../plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
@@ -337,11 +337,9 @@
   <!-- AdminLTE for demo purposes -->
   <script src="../../../dist/js/demo.js"></script>
   
-  <!-- custom script-->
-  <script src="../../../dist/js/pages/rawfood-category.js"></script>
-    <!-- Custom Script-->
-    <script src="../../../dist/js/pages/rawfood-category.js"></script>
+    <!-- custom script-->    
     <script src="../../../dist/js/common.js"></script>
+    <script src="../../../dist/js/pages/rawfood-category.js"></script>
 
 </body>
 

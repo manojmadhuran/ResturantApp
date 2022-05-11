@@ -1,8 +1,8 @@
 /*Globel Value */
 var ctsappversion = "07022022"; //Replace this for any Deployment xxxxxxx.js?v=04052021
 var auth = "Basic V29sZkFwcDpjRzl5ZEd0bGVRPT0=";
-//var apiURL = "http://localhost:2724/";
-var apiURL = "http://192.168.1.20/NPLK.WebAPI/ODRService/";
+var apiURL = "http://localhost:53205/";
+//var apiURL = "http://192.168.1.20/NPLK.WebAPI/ODRService/";
 //var appurl = "https://staging-cts.nipsea.com.sg/";
 var _user = "";
 
@@ -143,6 +143,22 @@ function setUserInfo(){
   document.getElementById("lbluemail").innerHTML = Cookies.get('useremail');
   document.getElementById("lblurole").innerHTML = Cookies.get('RoleName');
 }
+
+var getUrlParameter = function getUrlParameter(sParam) {
+  var sPageURL = window.location.search.substring(1),
+    sURLVariables = sPageURL.split('&'),
+    sParameterName,
+    i;
+
+  for (i = 0; i < sURLVariables.length; i++) {
+    sParameterName = sURLVariables[i].split('=');
+
+    if (sParameterName[0] === sParam) {
+      return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+    }
+  }
+  return false;
+};
 
 /* format currency */
 function Currency_Formatter(val) {
