@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../../../dist/css/googlefont.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
+
+    <link rel="stylesheet" href="../../../plugins/jquery-ui/jquery-ui.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="../../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- select2-->
@@ -23,9 +25,11 @@
     <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
     <!--Sweet Alert-->
     <link rel="stylesheet" href="../../../plugins/sweetalert2/sweetalert2.min.css"/>
+
+    
 </head>
 
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed">
+<body class="hold-transition light sidebar-mini layout-fixed layout-navbar-fixed small">
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -35,7 +39,7 @@
         </div>
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark">
+        <nav class="main-header navbar navbar-expand navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -106,7 +110,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-maroon elevation-4">
             <!-- Brand Logo -->
             <a href="../../../index3.html" class="brand-link">
                 <img src="../../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
@@ -274,105 +278,140 @@
                         <div class="col-md-12">
                             <!-- menu register content-->
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-header">
                                     <div class="row">
                                         <div class="col-md-2">
                                             <label>GRN No</label>
-                                            <input id="txtgrnNo" type="text" disabled class="form-control" />
+                                            <input id="txtgrnNo" type="text" disabled class="form-control" placeholder="[New]" />
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <label>GRN Date</label>
-                                            <input id="txtgrnDate" type="text" disabled class="form-control" />
+                                            <input type="text" id="txtGRNdate" class="form-control">
+                                        </div>                                        
+                                        <div class="col-md-2">
+                                            <label>Invoice No</label>
+                                            <input id="txtInvoiceNo" type="text" placeholder="Refference No" class="form-control" />
                                         </div>
-                                        <div class="col-md-3">
-                                            <label>Refference No</label>
-                                            <input id="txtrefferenceNo" type="text" placeholder="Refference No" class="form-control" />
+                                        <div class="col-md-2">
+                                            <label>Invoice Date</label>
+                                            <input id="txtInvoiceDate" type="text" class="form-control" />
                                         </div>
                                         <div class="col-md-4">
                                             <label>Supplier Name</label>
                                             <select id="drpsupplierName" data-placeholder="Supplier Name"
-                                                class="select2 form-control"></select>
+                                                class="select2 form-control">
+                                                <option value="0">-- Select supplier --</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row mb-4">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <label>Company</label>
                                             <select id="drpcompanyType" type="text" data-placeholder="Company Type"
                                                 class="select2 form-control"></select>
                                         </div>
                                         <div class="col-md-3">
                                             <label>GRN Type</label>
-                                            <select id="drpgrnType" data-placeholder="GRN Type" class="select2 form-control"></select>
+                                            <select id="drpgrnType" data-placeholder="GRN Type" class="select2 form-control">
+
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6" id="divevent">
+                                            <div class="row">
+                                                <div class="col-md-11">
+                                                    <label>Event Detail</label>
+                                                    <select id="drpeventdetail" data-placeholder="Event Detail" class="select2 form-control">
+                                                        <option value="0">-- Select Event --</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-1 mt-2">
+                                                    <br>
+                                                    <button id="btnview" class="btn btn-primary">
+                                                        <i class="fa fa-binoculars"></i>
+                                                    </button>
+                                                </div>                                              
+                                            </div>
+                                            
                                         </div>
                                     </div>
-                                    <hr class="bg-white" />
+                                </div>
+                                <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Item Category</label>
-                                            <select id="drpitemCategory" class="select2 form-control"
-                                                data-placeholder="Item Category"></select>
-                                        </div>
                                         <div class="col-md-4">
+                                            <label>Raw Item Category</label>
+                                            <select id="drprawitemCategory" class="form-control select2" data-placeholder="Raw Item Category">
+                                            <option value="0">-- Select category --</option>
+                                            </select> 
+
                                             <label>Item Name</label>
-                                            <select id="drpitemName" class="select2 form-control" data-placeholder="Item Name"></select>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>Item Code</label>
-                                            <input id="txtitemCode" type="text" class="form-control" placeholder="Item Code" />
+                                            <select id="drpitemName" class="form-control select2" data-placeholder="Item Name">
+                                            <option value="0">-- Select Item --</option>
+                                            </select>                                            
                                         </div>
                                         <div class="col-md-2">
                                             <label>UOM</label>
-                                            <input id="txtUOM" type="text" class="form-control" placeholder="UOM" />
+                                            <input id="txtUOM" type="text" disabled class="form-control" placeholder="Unit Of Measure"/>
+                                            <label>Unit Qty</label>
+                                            <input id="txtunitqty" type="text" disabled class="form-control" placeholder="Price"/>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Quantity</label>
-                                            <input id="txtquantity" type="text" class="form-control" placeholder="Quantity" />
+                                        <div class="col-md-2">
+                                            <label>Quantity *</label>
+                                            <input id="txtquantity" type="text" class="form-control" placeholder="Quantity" onkeypress="return validateInput(this,event);"/>
+                                            <label>Unit Price</label>
+                                            <input id="txtunitprice" type="text" class="form-control" placeholder="Price"/>                                            
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <label>Price</label>
-                                            <input id="txtprice" type="text" class="form-control" placeholder="Price" />
+                                            <input id="txtprice" type="text" disabled class="form-control" placeholder="Price"/>
                                         </div>
-                                        <div class="col-md-3">
-                                            <label>Total</label>
-                                            <input id="txttotal" type="text" class="form-control" placeholder="Total" />
-                                        </div>
-                                        <div class="col-md-3">
-                                            <br />
-                                            <button id="btnaddItem" type="button" class="btn btn-success mt-2">Add Item</button>
+                                        <div class="col-md-2">
+                                            <br/>
+                                            <button id="btnaddItem" class="btn btn-success mt-2" type="button">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="row mt-5">
                                         <div class="col-md-12">
-                                            <table id="dtitemGRN" class="table table-bordered">
-                                                <thead>
+                                            <table id="dtgrn" class="table table-bordered">
+                                                <thead class="bg-gray-light">
                                                     <tr>
+                                                        <th>RID</th>
                                                         <th>ItemName</th>
+                                                        <th>ItemID</th>
                                                         <th>UOM</th>
                                                         <th>Quantity</th>
                                                         <th>Price</th>
-                                                        <th width="15%"></th>
+                                                        <th width="5%"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>Chicken</td>
-                                                        <td>0.5</td>
-                                                        <td>Kg</td>
-                                                        <td>120.00</td>
-                                                        <td>
-                                                            <button class="btn btn-warning">Edit</button>
-                                                            <button class="btn btn-danger">Remove</button>
-                                                        </td>
-                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>GRN Total</label>
+                                            <input id="txttotalCost" type="text" class="form-control" disabled placeholder="Total"/>
+                                        </div>   
+                                        <div class="col-md-3">
+                                            <label>Discount %</label>
+                                            <input id="txtdiscount" type="text" class="form-control" value="0" placeholder="Discount"/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>VAT %</label>
+                                            <input id="txtVAT" type="text" class="form-control" value="0" placeholder="VAT"/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>Total Payable</label>
+                                            <input id="txttotalPay" type="text" class="form-control" disabled placeholder="Payable"/>
+                                        </div>                        
+                                    </div>                                    
                                 </div>
                                 <div class="card-footer">
-                                    <button id="btnsubmit" type="button" class="btn btn-primary">Submit</button>
+                                    <button id="btnnew" type="button" class="btn btn-success">New</button>
+                                    <button id="btnsubmit" type="button" class="btn btn-primary">Submit</button>                                    
                                     <button id="btnviewlist" class="btn btn-default float-right">View List</button>
                                 </div>
                             </div>
@@ -405,6 +444,10 @@
     <script src="../../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../../dist/js/adminlte.js"></script>
+
+    <script src="../.../../../../plugins/moment/moment.min.js"></script>
+
+    <script src="../../../plugins/jquery-ui/jquery-ui.min.js"></script>
 
     <!-- PAGE PLUGINS -->
     <!-- select2-->

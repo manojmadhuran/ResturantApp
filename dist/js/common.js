@@ -80,12 +80,11 @@ function fire_async_api_post(urlParam, res) {
 }
 
 /* API Upload files */
-function fire_async_api_upload_file(formdata, country) {
+function fire_async_api_upload_file(formdata, urlParam) {
   return new Promise((resolve, reject) => {
     $.ajax({
       url:
-        apiURL +
-        "ODR/uploadinvoices?userid=1",
+        apiURL + urlParam,
       type: "POST",
       headers: {
         Authorization: auth,
@@ -166,6 +165,16 @@ function Currency_Formatter(val) {
     .toFixed(2)
     .replace(/(\d)(?=(\d{3})+\.)/g, "$1,")
     .toString();
+}
+
+function Revert_Currency_Formatter(val) {
+  if (val !== "" && val.indexOf(",") > 0) {
+    return parseFloat(Number(val.replace(/[^0-9.-]/g, "")), 2);
+  } else if (val !== "") {
+    return parseFloat(val);
+  }else {
+    return val
+  }
 }
 
 function validateInput(input,e) {
