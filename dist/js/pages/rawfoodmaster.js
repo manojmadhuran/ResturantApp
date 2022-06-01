@@ -124,20 +124,20 @@ function ViewRawMaterialData(){
         fire_async_api_get("ResturantAdmin/GetMasterRawMaterials?RawMatID="+rawMatID+"").
         then((response)=>{
             if(response !== ""){
-                $("#txtitemName").val(response[0].RawMaterialName);
-                $("#txtitemCode").val(response[0].RawMaterialItemCode);
-                $("#txtreorderLevel").val(response[0].ReOrderLevel);
-                $("#txtunitPrice").val(response[0].UnitPrice);
-                $("#txtunitqty").val(response[0].UnitQty);
-                $("#txtsellingPrice").val(response[0].SellingPrice);
+                $("#txtitemName").val(response.RawMaterialName);
+                $("#txtitemCode").val(response.RawMaterialItemCode);
+                $("#txtreorderLevel").val(response.ReOrderLevel);
+                $("#txtunitPrice").val(response.UnitPrice);
+                $("#txtunitqty").val(response.UnitQty);
+                $("#txtsellingPrice").val(response.SellingPrice);
 
-                $("#drpunitType").val(response[0].UnitType).trigger('change');
-                $("#drpitemCategory").val(response[0].RawMaterialCategoryID).trigger('change');
-                $("#drpUOM").val(response[0].UnitOfMeasure).trigger('change');
+                $("#drpunitType").val(response.UnitType).trigger('change');
+                $("#drpitemCategory").val(response.RawMaterialCategoryID).trigger('change');
+                $("#drpUOM").val(response.UnitOfMeasure).trigger('change');
 
-                var status = (response[0].IsActive==1)?true:false;
+                var status = (response.IsActive==1)?true:false;
                 $("#chkactive").prop("checked",status);
-                var menu = (response[0].isMenuItem==1)?true:false;
+                var menu = (response.isMenuItem==1)?true:false;
                 $("#chkaddtomenu").prop("checked",menu);
             }
         });

@@ -32,7 +32,7 @@ $(document).ready(function(){
 
     GRNID = getUrlParameter('grnid');
     if(GRNID > 0){
-        ViewMenuData();
+        ViewGRNDetail();
     }
     console.log(GRNID);
 
@@ -414,3 +414,6 @@ function ViewMenuData(){
         });
     });
 }
+
+
+

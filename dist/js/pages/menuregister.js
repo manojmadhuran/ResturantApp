@@ -9,6 +9,8 @@ var UnitQty = [];
 var MenuID = 0;
 var JsonResult = [];
 
+
+
 var dtble = $("#dtMenuregister").DataTable({
     "paging": true,
     "columnDefs": [

@@ -247,7 +247,7 @@
                                           <p class="img-size-50">View GRN</p>
                                       </a>
                                   </li>
-                              </ul>
+                                </ul>
                             </li>                        
                         </li>
                         
@@ -294,7 +294,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <label>GRN Date</label>
-                                            <input type="text" id="txtGRNdate" disabled class="form-control">
+                                            <input type="text" id="txtGRNdate" placeholder="GRN Date" disabled class="form-control">
                                         </div>                                        
                                         <div class="col-md-2">
                                             <label>Invoice No</label>
@@ -302,7 +302,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <label>Invoice Date</label>
-                                            <input id="txtInvoiceDate" type="text" disabled class="form-control" />
+                                            <input id="txtInvoiceDate" type="text" placeholder="Invoice Date" disabled class="form-control" />
                                         </div>
                                         <div class="col-md-4">
                                             <label>Supplier Name</label>
@@ -347,15 +347,16 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <table id="dtgrn" class="table table-bordered">
-                                                <thead class="bg-gray-light">
+                                                <thead class="bg-gray-light text-center">
                                                     <tr>
                                                         <th>RID</th>
-                                                        <th>ItemName</th>
+                                                        <th  style="width: 40%;">ItemName</th>
                                                         <th>ItemID</th>
                                                         <th>UOM</th>
-                                                        <th>Quantity</th>
-                                                        <th>Price</th>
-                                                        <th width="5%"></th>
+                                                        <th>Unit Qty</th>
+                                                        <th>Unit Price</th>
+                                                        <th>GRN Quantity</th>
+                                                        <th>GRN Price</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -436,7 +437,7 @@
     <script src="../../../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
     <!-- Custom Script-->
-    <script src="../../../dist/js/pages/rawfoodgrn.js"></script>
+    <script src="../../../dist/js/pages/viewgrn.js"></script>
     <script src="../../../dist/js/common.js"></script>
 
 

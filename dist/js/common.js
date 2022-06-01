@@ -194,3 +194,11 @@ function validateInput(input,e) {
 }
 
 $('.input').on('keydown', function(e){ if (e.keyCode == 9)  e.preventDefault() });
+
+/*Set focus for Select2 input field*/
+$(document).on('select2:open', '.select2', function (e) {
+  setTimeout(() => {
+      const $elem = $(this).attr("id");
+      document.querySelector(`[aria-controls="select2-${$elem}-results"]`).focus();
+  });
+});
