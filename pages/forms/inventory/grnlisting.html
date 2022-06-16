@@ -7,11 +7,10 @@
     <title>AdminLTE 3 | Dashboard 2</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="../../../dist/css/googlefont.css">
+    <link rel="stylesheet"
+        href="../../../dist/css/googlefont.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
-
-    <link rel="stylesheet" href="../../../plugins/jquery-ui/jquery-ui.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="../../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- select2-->
@@ -21,15 +20,15 @@
     <link rel="stylesheet" href="../../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <!--icheckbox-->
     <link rel="stylesheet" href="../../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="../../../plugins/sweetalert2/sweetalert2.min.css"/>
+    <!-- daterange picker-->
+    <link rel="stylesheet" href="../../../plugins/daterangepicker/daterangepicker.css" />
+
     <!-- Theme style -->
     <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
-    <!--Sweet Alert-->
-    <link rel="stylesheet" href="../../../plugins/sweetalert2/sweetalert2.min.css"/>
-
-    
 </head>
 
-<body class="hold-transition light sidebar-mini layout-fixed layout-navbar-fixed small">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed small">
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -110,7 +109,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-maroon elevation-4">
+        <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
             <a href="../../../index3.html" class="brand-link">
                 <img src="../../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
@@ -201,11 +200,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../../pages/forms/master/menuregister.html" class="nav-link">
+                                    <a href="../../../pages/forms/master/menuregister.html" class="nav-link ">
                                         <i class="fas fa-minus nav-icon"></i>
                                         <p class="img-size-50">Menu Register</p>
                                     </a>
                                 </li>
+                                
                             </ul>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
@@ -224,7 +224,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item menu-open">
+                            <li class="nav-item  menu-open">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fas fa-boxes"></i>
                                     <p>
@@ -241,14 +241,14 @@
                                     </li>
                                 </ul>
                                 <ul class="nav nav-treeview">
-                                  <li class="nav-item">
-                                      <a href="../../../pages/forms/inventory/viewGRN.html" class="nav-link active">
-                                          <i class="fas fa-minus nav-icon"></i>
-                                          <p class="img-size-50">View GRN</p>
-                                      </a>
-                                  </li>
+                                    <li class="nav-item">
+                                        <a href="../../../pages/forms/inventory/viewGRN.html" class="nav-link active">
+                                            <i class="fas fa-minus nav-icon"></i>
+                                            <p class="img-size-50">View GRN</p>
+                                        </a>
+                                    </li>
                                 </ul>
-                            </li>                        
+                            </li>
                         </li>
                         
                     </ul>
@@ -265,13 +265,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">GRN - <span id="status"></span> </h1>
+                            <h1 class="m-0">GRN Listing</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Inventory</a></li>
-                                <li class="breadcrumb-item active">GRN</li>
+                                <li class="breadcrumb-item active">GRN Listing</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -288,75 +287,48 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <label>GRN No</label>
-                                            <input id="txtgrnNo" type="text" disabled class="form-control" placeholder="[New]" />
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>GRN Date</label>
-                                            <input type="text" id="txtGRNdate" placeholder="GRN Date" disabled class="form-control">
-                                        </div>                                        
-                                        <div class="col-md-2">
-                                            <label>Invoice No</label>
-                                            <input id="txtInvoiceNo" type="text" disabled placeholder="Refference No" class="form-control" />
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>Invoice Date</label>
-                                            <input id="txtInvoiceDate" type="text" placeholder="Invoice Date" disabled class="form-control" />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Supplier Name</label>
-                                            <select id="drpsupplierName" data-placeholder="Supplier Name" disabled
-                                                class="select2 form-control">
-                                                <option value="0">-- Select supplier --</option>
+                                        <div class="col-sm-3">
+                                            <label>Select</label>
+                                            <select id="type" class="select2 form-control">
+                                                <option value="0">All</option>
+                                                <option value="1">GRN Date</option>
+                                                <option value="2">Created Date</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="row mb-4">
-                                        <div class="col-md-3">
-                                            <label>Company</label>
-                                            <select id="drpcompanyType" type="text" data-placeholder="Company Type" disabled
-                                                class="select2 form-control"></select>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>GRN Type</label>
-                                            <select id="drpgrnType" data-placeholder="GRN Type" disabled class="select2 form-control">
-
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6" id="divevent">
-                                            <div class="row">
-                                                <div class="col-md-11">
-                                                    <label>Event Detail</label>
-                                                    <select id="drpeventdetail" data-placeholder="Event Detail" disabled class="select2 form-control">
-                                                        <option value="0">-- Select Event --</option>
-                                                    </select>
+                                        <div class="col-sm-3">
+                                            <label>Date range:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                    </span>
                                                 </div>
-                                                <div class="col-md-1 mt-2">
-                                                    <br>
-                                                    <button id="btnview" class="btn btn-primary">
-                                                        <i class="fa fa-binoculars"></i>
-                                                    </button>
-                                                </div>                                              
+                                                <input type="text" class="form-control float-right" id="datetime">
                                             </div>
-                                            
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <br>
+                                            <button id="btnsearch" class="btn btn-success mt-2">Search</button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body">                                   
+                                    
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <table id="dtgrn" class="table table-bordered">
-                                                <thead class="bg-gray-light text-center">
+                                            <table id="dtGRNList" class="table table-responsive-lg table-bordered table-separate table-head-custom table-checkable nowrap">
+                                                <thead>
                                                     <tr>
-                                                        <th>RID</th>
-                                                        <th  style="width: 40%;">ItemName</th>
-                                                        <th>ItemID</th>
-                                                        <th>UOM</th>
-                                                        <th>Unit Qty</th>
-                                                        <th>Unit Price</th>
-                                                        <th>GRN Quantity</th>
-                                                        <th>GRN Price</th>
+                                                        <th>GRNID</th>
+                                                        <th>GRN Date</th>
+                                                        <th>Invoice No</th>
+                                                        <th>Invoice Date</th>
+                                                        <th>Supplier Name</th>
+                                                        <th>Company Name</th>
+                                                        <th>GRN Type</th>
+                                                        <th>Items</th>
+                                                        <th>Total Payable</th>
+                                                        <th>Is Approved</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -364,29 +336,10 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>GRN Total</label>
-                                            <input id="txttotalCost" type="text" class="form-control" disabled placeholder="Total"/>
-                                        </div>   
-                                        <div class="col-md-3">
-                                            <label>Discount %</label>
-                                            <input id="txtdiscount" type="text" class="form-control" disabled value="0" placeholder="Discount"/>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>VAT %</label>
-                                            <input id="txtVAT" type="text" class="form-control" disabled value="0" placeholder="VAT"/>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>Total Payable</label>
-                                            <input id="txttotalPay" type="text" class="form-control" disabled placeholder="Payable"/>
-                                        </div>                        
-                                    </div>                                    
+                                    
                                 </div>
                                 <div class="card-footer">
-                                    <button id="btncancel" type="button" class="btn btn-danger">Cancel</button>
-                                    <button id="btnsubmit" type="button" class="btn btn-primary">Approve</button>                                    
-                                    <button id="btnviewlist" class="btn btn-default float-right">View List</button>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -418,12 +371,10 @@
     <script src="../../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../../dist/js/adminlte.js"></script>
-
-    <script src="../.../../../../plugins/moment/moment.min.js"></script>
-
-    <script src="../../../plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../../../plugins/sweetalert2/sweetalert2.min.js"></script>
 
     <!-- PAGE PLUGINS -->
+
     <!-- select2-->
     <script src="../../../plugins/select2/js/select2.full.min.js"></script>
     <!-- datatable-->
@@ -433,13 +384,14 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../../../dist/js/demo.js"></script>
 
-    <!--Sweet Alert-->
-    <script src="../../../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="../../../dist/js/pages/moment.js"></script>
+
+    <!-- daterange picker-->
+    <script src="../../../plugins/daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Script-->
-    <script src="../../../dist/js/pages/viewgrn.js"></script>
+    <script src="../../../dist/js/pages/grnlisting.js"></script>
     <script src="../../../dist/js/common.js"></script>
-
 
 </body>
 

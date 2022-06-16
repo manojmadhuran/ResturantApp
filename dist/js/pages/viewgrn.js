@@ -122,6 +122,50 @@ $("#drpgrnType").on('change', function (){
     }
 });
 
+$("#btncancel").on('click', function (){
+    Swal.fire({
+        title: "Cancel GRN",
+        text: "Are you sure you want to cancel this GRN ?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        reverseButtons: true,
+        }).then((result)=>{
+            if(result.value){
+                fire_async_api_get("ResturantAdmin/SetApproveCancelGRN?headerid="+GRNID+"&isapprove=0").then((response)=>{
+                    if(response == 1){
+                        Swal.fire("Done","GRN canceled succesfully","success")
+                    }else{
+                        Swal.fire("Error","GRN canceled failed. Check your network connection","error");
+                    }
+                })
+            }
+        });    
+});
+
+$("#btnsubmit").on('click', function (){
+    Swal.fire({
+        title: "Approve GRN",
+        text: "Are you sure you want to approve this GRN ?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        reverseButtons: true,
+        }).then((result)=>{
+            if(result.value){
+                fire_async_api_get("ResturantAdmin/SetApproveCancelGRN?headerid="+GRNID+"&isapprove=1").then((response)=>{
+                    if(response == 1){
+                        Swal.fire("Done","GRN approved succesfully","success")
+                    }else{
+                        Swal.fire("Error","GRN approval failed. Check your network connection","error");
+                    }
+                })
+            }
+        }); 
+});
+
 //---------------- VIEW GRN --------------------------------------
 function ViewGRNDetail(){
     fire_async_api_get("ResturantAdmin/GetGRNData?headerid="+GRNID).then((response)=>{
@@ -138,6 +182,21 @@ function ViewGRNDetail(){
         $("#txtdiscount").val(Currency_Formatter(response.Discount));
         $("#txtVAT").val(Currency_Formatter(response.VAT));
         $("#txttotalPay").val(Currency_Formatter(response.TotalPayable));
+
+        var IsApproved = response.IsApproved;
+        var Approve_CancelDate = response.Approve_CancelDate;
+
+        if(Approve_CancelDate !== null && IsApproved > 0){
+            document.getElementById("status").innerHTML = "<span class='text-success font-weight-bold'>Approved</span>";
+            $("#btncancel").hide();
+            $("#btnsubmit").hide();
+        }else if(Approve_CancelDate !== null && IsApproved == 0){
+            document.getElementById("status").innerHTML = "<span class='text-danger font-weight-bold'>Cancel</span>";
+            $("#btncancel").hide();
+            $("#btnsubmit").hide();
+        }else{
+            document.getElementById("status").innerHTML = "<span class='text-yellow font-weight-bold'>Pending</span>";
+        }
 
         JsonResult = response.Detail; 
         dtble.clear().draw();
@@ -157,3 +216,7 @@ function ClearFields(){
     $("#divevent").hide();
     dtble.clear().draw();
 }
+
+$("#btnviewlist").on('click', function(){
+    location.replace("./grnlisting.html");
+})

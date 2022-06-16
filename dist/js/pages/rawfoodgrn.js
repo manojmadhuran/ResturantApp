@@ -373,7 +373,9 @@ $("#btnnew").on('click', function(){
     location.replace("/pages/forms/inventory/rawfoodGRN.html");
 });
 
-
+$("#btnviewlist").on('click', function(){
+    location.replace("./grnlisting.html");
+})
 
 
 
