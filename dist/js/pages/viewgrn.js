@@ -33,7 +33,7 @@ var dtble = $("#dtgrn").DataTable({
 });
 
 $(document).ready(function(){
-
+    UserID = GetUserDetail();
     ClearFields();
     MasterData();
 
@@ -157,7 +157,9 @@ $("#btnsubmit").on('click', function (){
             if(result.value){
                 fire_async_api_get("ResturantAdmin/SetApproveCancelGRN?headerid="+GRNID+"&isapprove=1").then((response)=>{
                     if(response == 1){
-                        Swal.fire("Done","GRN approved succesfully","success")
+                        Swal.fire("Done","GRN approved succesfully","success").then((response)=>{
+                            location.replace("../listing/grnlisting.html");
+                        })
                     }else{
                         Swal.fire("Error","GRN approval failed. Check your network connection","error");
                     }
@@ -218,5 +220,5 @@ function ClearFields(){
 }
 
 $("#btnviewlist").on('click', function(){
-    location.replace("./grnlisting.html");
+    location.replace("../listing/grnlisting.html");
 })

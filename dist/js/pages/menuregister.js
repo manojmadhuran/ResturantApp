@@ -20,6 +20,7 @@ var dtble = $("#dtMenuregister").DataTable({
 });
 
 $(document).ready(function(){
+    UserID = GetUserDetail();
     ClearFields();
     MasterData();
 
@@ -138,7 +139,7 @@ function AddRow(){
                 $("#txtUOM").val(),
                 $("#txtquantity").val(),
                 $("#txtprice").val(),
-                '<a type="button" class="btn-sm btn btn-danger small"  value="Remove"> Remove <i class="sm fa fa-trash"></i></a>'
+                '<a type="button" class="btn btn-danger btn-sm"  value="Remove"> Remove <i class="sm fa fa-trash"></i></a>'
             ]).draw(false);
 
             //clear fields       
@@ -342,10 +343,7 @@ $("#imgMenu").on('change', function(){
 });
 
 $("#btnviewlist").on('click', function (e){
-    // upload menu image.
-    const fileInput = document.getElementById('imgMenu');
-    const selectedFile = fileInput.files[0];
-    console.log(selectedFile);
+    location.replace("../listing/menulist.html");
 });
 
 $("#btnreset").on('click', function(){

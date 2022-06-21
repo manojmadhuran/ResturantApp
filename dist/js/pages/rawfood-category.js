@@ -1,4 +1,4 @@
-var userID = 1;
+var UserID = 1;
 var JsonResult = [];
 var _catID = 0;
 
@@ -10,7 +10,7 @@ var table = $("#tblCategory").DataTable({
         { data: "",
         render: function (data, type, row) {
             return (
-              '<input type="button" class="small btn btn-warning" value="Edit" onclick = View("'+row.CategoryID+'","'+row.CategoryName+'") />')
+              '<input type="button" class="small btn btn-warning btn-sm" value="Edit" onclick = View("'+row.CategoryID+'","'+row.CategoryName+'") />')
             },
         }
     ]
@@ -22,6 +22,7 @@ function View(catID ,catName){
 }
 
 $(document).ready(function(){
+    UserID = GetUserDetail();
     clearfields();
     getRawFoodCategory();
 });

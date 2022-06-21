@@ -11,7 +11,7 @@ dtTable = $("#dtGRNList").DataTable({
     data:JsonResult,
     columns:[
         {data:"GRNID", render: function(data, type, row){
-            return('<a href="./viewgrn.html?grnid='+data+'">'+data+'</a>')
+            return('<a href="../inventory/viewgrn.html?grnid='+data+'">'+data+'</a>')
         }},
         {data:"GRNDate", render: function (data, type, row) {
             return moment(data.substring(0, 10)).format("YYYY-MM-DD");
@@ -25,11 +25,15 @@ dtTable = $("#dtGRNList").DataTable({
         {data:"TypeName"},
         {data:"NumOfItems"},
         {data:"TotalPayable", render: $.fn.dataTable.render.number( ',', '.', 2 )},
-        {data:"IsApproved"}
+        {data:"IsApproved", render: function(data, type, row){
+            var txt = (data == 1)?'YES':'NO';
+            return(txt)
+        }}
     ]
 });
 
 $(document).ready(function(){
+    GetUserDetail();
     LoadGRNListing();
 });
 

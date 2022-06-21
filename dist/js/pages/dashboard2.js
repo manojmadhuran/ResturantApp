@@ -2,7 +2,7 @@
 
 $(function () {
   'use strict'
-
+  GetUserDetail();
   /* ChartJS
    * -------
    * Here we will create a few charts using ChartJS

@@ -3,10 +3,11 @@ $(".select2").select2();
 var RawCategory = [];
 var UnitType = [];
 var UoM = [];
-
+var dtMaterialList;
 var rawMatID = 0;
 
 $(document).ready(function(){
+    UserID = GetUserDetail();
     MasterData();
     clearfields();
     rawMatID = getUrlParameter('rawMatID');
@@ -70,6 +71,10 @@ function MasterData(){
 }
 $("#btnsave").on('click', function(){
     SetMasterRawMaterials();
+});
+
+$("#btnviewlist").on('click', function (){
+    location.replace("../listing/rawmateriallist.html");
 });
 
 function SetMasterRawMaterials(){
@@ -152,3 +157,4 @@ function clearfields(){
     $("#txtunitqty").val("");
     $("#txtsellingPrice").val("");
 }
+

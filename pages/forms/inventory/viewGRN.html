@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard 2</title>
+    <title>Resturant Admin</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="../../../dist/css/googlefont.css">
@@ -101,8 +101,8 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
+                    <a class="nav-link" href="../../../login.html" role="button">
+                        <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </li>
             </ul>
@@ -110,45 +110,29 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-maroon elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="../../../index3.html" class="brand-link">
                 <img src="../../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Resturant Admin</span>
             </a>
+            <div id="logo"></div>
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="../../../dist/img/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Administrator</a>
-                    </div>
-                </div>
+                <!-- Sidebar user panel (optional) -->                
+                <div id="sidebar_user"></div>
 
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <!-- SidebarSearch Form -->                
+                <div id="sidebar_search"></div>
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
@@ -166,89 +150,13 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Documentation</p>
-                            </a>
+                        
+                        <li class="nav-header">RESTURANT MASTER</li>                        
+                        <li class="nav-item" id="nav_item_food">                            
                         </li>
-                        <li class="nav-header">RESTURANT MASTER</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-utensils"></i>
-                                <p>
-                                    Foods
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../../../pages/forms/master/rawfoodcategory.html" class="nav-link">
-                                        <i class="fas fa-minus nav-icon"></i>
-                                        <p class="img-size-50">Raw Food Category</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../../../pages/forms/master/rawfoodmaster.html" class="nav-link">
-                                        <i class="fas fa-minus nav-icon"></i>
-                                        <p class="img-size-50">Raw Foods</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../../../pages/forms/master/menucategory.html" class="nav-link">
-                                        <i class="fas fa-minus nav-icon"></i>
-                                        <p class="img-size-50">Menu Category</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../../../pages/forms/master/menuregister.html" class="nav-link">
-                                        <i class="fas fa-minus nav-icon"></i>
-                                        <p class="img-size-50">Menu Register</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-truck"></i>
-                                    <p>
-                                        Supplier
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="../../../pages/forms/master/suppliers.html" class="nav-link">
-                                            <i class="fas fa-minus nav-icon"></i>
-                                            <p class="img-size-50">Suppliers</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item menu-open">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-boxes"></i>
-                                    <p>
-                                        Inventory
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="../../../pages/forms/inventory/rawfoodGRN.html" class="nav-link">
-                                            <i class="fas fa-minus nav-icon"></i>
-                                            <p class="img-size-50">GRN</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul class="nav nav-treeview">
-                                  <li class="nav-item">
-                                      <a href="../../../pages/forms/inventory/viewGRN.html" class="nav-link active">
-                                          <i class="fas fa-minus nav-icon"></i>
-                                          <p class="img-size-50">View GRN</p>
-                                      </a>
-                                  </li>
-                                </ul>
-                            </li>                        
+                        <li class="nav-item" id="nav_item_supplier">                            
+                        </li>
+                        <li class="nav-item" id="nav_item_inventory">                            
                         </li>
                         
                     </ul>
@@ -424,6 +332,7 @@
     <script src="../../../plugins/jquery-ui/jquery-ui.min.js"></script>
 
     <!-- PAGE PLUGINS -->
+    <script src="/dist/js/js.cookie.min.js"></script>
     <!-- select2-->
     <script src="../../../plugins/select2/js/select2.full.min.js"></script>
     <!-- datatable-->
@@ -435,6 +344,10 @@
 
     <!--Sweet Alert-->
     <script src="../../../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+
+        <!-- PAGE PLUGINS -->
+        <script src="../../../dist/js/pages/navHandler.js"></script>
+
 
     <!-- Custom Script-->
     <script src="../../../dist/js/pages/viewgrn.js"></script>

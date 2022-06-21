@@ -2,6 +2,7 @@ var UserID = 1;
 var SupID = 0;
 
 $(document).ready(function(){
+    UserID = GetUserDetail();
     SupID = getUrlParameter('supid');
     if(SupID > 0){
         GetSupplierData();
@@ -11,6 +12,10 @@ $(document).ready(function(){
 $("#btnsubmit").on('click', function(){
     SetSupplierData();
 });
+
+$("#btnviewlist").on('click', function (){
+    location.replace("../listing/supplierlist.html");
+})
 
 function SetSupplierData(){
     var supcode = $("#txtsupplierCode").val();

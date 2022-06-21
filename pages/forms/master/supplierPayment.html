@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Resturant Admin </title>
+    <title>Resturant Admin</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="../../../dist/css/googlefont.css">
@@ -150,7 +150,7 @@
                                 </li>
                             </ul>
                         </li>
-                       
+                        
                         <li class="nav-header">RESTURANT MASTER</li>                        
                         <li class="nav-item" id="nav_item_food">                            
                         </li>
@@ -165,7 +165,6 @@
             </div>
             <!-- /.sidebar -->
         </aside>
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -173,13 +172,13 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Good Receive Note (GRN)</h1>
+                            <h2 class="font-weight-bold">Supplier Payment</h2>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Inventory</a></li>
-                                <li class="breadcrumb-item active">GRN</li>
+                                <li class="breadcrumb-item"><a href="#">Supplier</a></li>
+                                <li class="breadcrumb-item active">Pay Outstanding</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -196,140 +195,131 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <label>GRN No</label>
-                                            <input id="txtgrnNo" type="text" disabled class="form-control" placeholder="[New]" />
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>GRN Date</label>
-                                            <input type="text" id="txtGRNdate" class="form-control">
-                                        </div>                                        
-                                        <div class="col-md-2">
-                                            <label>Invoice No</label>
-                                            <input id="txtInvoiceNo" type="text" placeholder="Refference No" class="form-control" />
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>Invoice Date</label>
-                                            <input id="txtInvoiceDate" type="text" class="form-control" />
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div class="col-sm-6">
                                             <label>Supplier Name</label>
-                                            <select id="drpsupplierName" data-placeholder="Supplier Name"
-                                                class="select2 form-control">
-                                                <option value="0">-- Select supplier --</option>
+                                            <select id="drpsupplierName" class="select2 form-control" data-placeholder="Supplier Name">
+                                                <option value="0">-- Select Supplier --</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="row mb-4">
-                                        <div class="col-md-3">
-                                            <label>Company</label>
-                                            <select id="drpcompanyType" type="text" data-placeholder="Company Type"
-                                                class="select2 form-control"></select>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>GRN Type</label>
-                                            <select id="drpgrnType" data-placeholder="GRN Type" class="select2 form-control">
-
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6" id="divevent">
+                                        <div class="col-sm-6">
                                             <div class="row">
-                                                <div class="col-md-11">
-                                                    <label>Event Detail</label>
-                                                    <select id="drpeventdetail" data-placeholder="Event Detail" class="select2 form-control">
-                                                        <option value="0">-- Select Event --</option>
-                                                    </select>
+                                                <div class="col-sm-4">
+                                                    <label>Total Purchased</label>
+                                                    <input class="form-control" type="text" disabled id="txtTotal"/>
                                                 </div>
-                                                <div class="col-md-1 mt-2">
-                                                    <br>
-                                                    <button id="btnview" class="btn btn-primary">
-                                                        <i class="fa fa-binoculars"></i>
-                                                    </button>
-                                                </div>                                              
+                                                <div class="col-sm-4">
+                                                    <label>Total Paid</label>
+                                                    <input class="form-control" type="text" disabled id="txtTotalPaid"/>
+                                                </div> 
+                                                <div class="col-sm-4">
+                                                    <label class="text-danger">Total Outstanding</label>
+                                                    <input class="form-control text-danger font-weight-bold border-danger" type="text" disabled id="txtTotalOutstanding"/>
+                                                </div>                                               
                                             </div>
                                             
                                         </div>
-                                    </div>
+                                    </div>                                                                        
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <label>Raw Item Category</label>
-                                            <select id="drprawitemCategory" class="form-control select2" data-placeholder="Raw Item Category">
-                                            <option value="0">-- Select category --</option>
-                                            </select> 
-
-                                            <label>Item Name</label>
-                                            <select id="drpitemName" class="form-control select2" data-placeholder="Item Name">
-                                            <option value="0">-- Select Item --</option>
-                                            </select>                                            
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>UOM</label>
-                                            <input id="txtUOM" type="text" disabled class="form-control" placeholder="Unit Of Measure"/>
-                                            <label>Unit Qty</label>
-                                            <input id="txtunitqty" type="text" disabled class="form-control" placeholder="Price"/>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>Quantity *</label>
-                                            <input id="txtquantity" type="text" class="form-control" placeholder="Quantity" onkeypress="return validateInput(this,event);"/>
-                                            <label>Unit Price</label>
-                                            <input id="txtunitprice" type="text" class="form-control" placeholder="Price"/>                                            
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>Price</label>
-                                            <input id="txtprice" type="text" disabled class="form-control" placeholder="Price"/>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <br/>
-                                            <button id="btnaddItem" class="btn btn-success mt-2" type="button">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-12">
-                                            <table id="dtgrn" class="table table-bordered">
-                                                <thead class="bg-gray-light">
-                                                    <tr>
-                                                        <th>RID</th>
-                                                        <th>ItemName</th>
-                                                        <th>ItemID</th>
-                                                        <th>UOM</th>
-                                                        <th>Quantity</th>
-                                                        <th>Price</th>
-                                                        <th width="5%"></th>
-                                                    </tr>
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label>GRN No</label>
+                                                    <input id="txtgrnid" type="text" class="form-control text" disabled/>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>GRN Date</label>
+                                                    <input id="txtgrndate" type="text" class="form-control text" disabled/>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>Invoice No</label>
+                                                    <input id="txtinvno" type="text" class="form-control text" disabled/>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>Invoice Date</label>
+                                                    <input type="text" id="txtinvdate" class="form-control text" disabled/>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>GRN Total</label>
+                                                    <input type="text" id="txtgrntot" class="form-control text" disabled/>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>GRN Paid</label>
+                                                    <input type="text" id="txtgrnpaid" class="form-control text" disabled/>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label class="text-danger">GRN Outstanding</label>
+                                                    <input type="text" id="txtgrnbal" class="form-control text border-danger text-danger font-weight-bold" disabled/>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label>Payment Type</label>
+                                                    <select id="drppaytype" class="select2 form-control" data-placeholder="Type">
+                                                        <option value="1">Card</option>
+                                                        <option value="2">Cash</option>
+                                                        <option value="3">Cheque</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>Payment Date</label>
+                                                    <input type="text" id="txtpaiddate" class="form-control" onkeypress="return false" />
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>Pay Amount</label>
+                                                    <input type="text" id="txtamount" class="form-control text font-weight-bold" onkeypress="return validateInput(this,event);" />
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label>Card/ Cheque No</label>
+                                                    <input type="text" id="txtcardchNo" class="form-control text" />
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                        <div class="col-sm-6 border-left">
+                                            <div class="text-center"><h6 class="font-weight-bold mb-4">GRN Outstanding List</h6></div>
+                                            <table id="dtGRNList" style="min-width: 100%; max-width: 100%;" class="table table-bordered table-separate table-head-custom table-checkable nowrap">
+                                                <thead class="bg-gradient-light">
+                                                    <th>#</th>
+                                                    <th>GRN Date</th>
+                                                    <th>Invoice No</th>
+                                                    <th>GRN Total</th>
+                                                    <th>GRN Paid</th>
+                                                    <th>GRN Outstanding</th>
                                                 </thead>
-                                                <tbody>
-                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>GRN Total</label>
-                                            <input id="txttotalCost" type="text" class="form-control" disabled placeholder="Total"/>
-                                        </div>   
-                                        <div class="col-md-3">
-                                            <label>Discount %</label>
-                                            <input id="txtdiscount" type="text" class="form-control" value="0" placeholder="Discount"/>
+                                    <div class="row mt-4 justify-content-center border-top">
+                                        <h6 class="text-black font-weight-bold mt-3 text-dark text-center">Supplier Payment History</h6>
+                                        <div class="row col-sm-12 text-right justify-content-center">                                       
+                                                <table id="dtpayHistory" style="min-width: 100%; max-width: 100%;" class="table table-bordered table-separate table-head-custom table-checkable nowrap">
+                                                    <thead>
+                                                        <th>Payment ID</th>
+                                                        <th>GRN No</th>
+                                                        <th>Payment Amount</th>
+                                                        <th>Payment Date</th>
+                                                        <th>Payment Type</th>
+                                                        <th>Card/Cheque No</th>
+                                                    </thead>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <td colspan="2" class="text-center"> Total Payment</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
                                         </div>
-                                        <div class="col-md-3">
-                                            <label>VAT %</label>
-                                            <input id="txtVAT" type="text" class="form-control" value="0" placeholder="VAT"/>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>Total Payable</label>
-                                            <input id="txttotalPay" type="text" class="form-control" disabled placeholder="Payable"/>
-                                        </div>                        
                                     </div>                                    
                                 </div>
                                 <div class="card-footer">
-                                    <button id="btnnew" type="button" class="btn btn-success">New</button>
-                                    <button id="btnsubmit" type="button" class="btn btn-primary">Submit</button>                                    
-                                    <button id="btnviewlist" class="btn btn-default float-right">View List</button>
-                                </div>
+                                    <button id="btnsubmit" type="button" class="btn btn-success">Create Payment</button>
+                                    <button id="btnviewList" type="button" class="btn btn-default float-right">View List</button> 
+                                </div>                             
                             </div>
                         </div>
                     </div>
@@ -366,6 +356,7 @@
     <script src="../../../plugins/jquery-ui/jquery-ui.min.js"></script>
 
     <!-- PAGE PLUGINS -->
+    <script src="/dist/js/js.cookie.min.js"></script>
     <!-- select2-->
     <script src="../../../plugins/select2/js/select2.full.min.js"></script>
     <!-- datatable-->
@@ -375,8 +366,6 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../../../dist/js/demo.js"></script>
 
-    <script src="/dist/js/js.cookie.min.js"></script>
-
     <!--Sweet Alert-->
     <script src="../../../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
@@ -385,8 +374,9 @@
 
 
     <!-- Custom Script-->
-    <script src="../../../dist/js/pages/rawfoodgrn.js"></script>
     <script src="../../../dist/js/common.js"></script>
+
+    <script src="../../../dist/js/pages/supplierpay.js"></script>
 
 
 </body>

@@ -16,16 +16,19 @@
     <!-- select2-->
     <link rel="stylesheet" href="../../../plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="../../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- datatable-->
+    <link rel="stylesheet" href="../../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <!--icheckbox-->
     <link rel="stylesheet" href="../../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="../../../plugins/sweetalert2/sweetalert2.min.css"/>
+    <!-- daterange picker-->
+    <link rel="stylesheet" href="../../../plugins/daterangepicker/daterangepicker.css" />
+
     <!-- Theme style -->
     <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
-
-    <link rel="stylesheet" href="../../../plugins/sweetalert2/sweetalert2.min.css"/>
-
 </head>
 
-<body class="hold-transition light sidebar-mini layout-fixed layout-navbar-fixed small">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed small">
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -161,6 +164,7 @@
             </div>
             <!-- /.sidebar -->
         </aside>
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -168,12 +172,13 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Raw Foods</h1>
+                            <h2 class="m-0">Raw Material Stock List</h2>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Raw Foods</li>
+                                <li class="breadcrumb-item"><a href="../master/rawfoodmaster.html">Raw Material</a></li>
+                                <li class="breadcrumb-item active">Raw Material List</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -183,74 +188,79 @@
 
             <!-- Main content -->
             <section class="content">
+                <!-- Modal Box Begin-->
+            <div class="modal fade"
+            id="modal-default"
+            style="display: none;"
+            aria-hidden="true">
+           <div class="modal-dialog modal-lg">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h4 class="modal-title">Outstanding GRN Breakdown  </h4>                            
+                       <button type="button"
+                               class="close"
+                               data-dismiss="modal"
+                               aria-label="Close">
+                           <span aria-hidden="true">×</span>
+                       </button>                            
+                   </div>
+                   <div class="modal-body">
+                       <div>
+                        <h5 class="text-sm">Supplier ID : <span id="suppid" ></span></h5>
+                           <table id="dtGRNList" style="min-width: 100%; max-width: 100%;" class="table table-bordered table-separate table-head-custom table-checkable nowrap">
+                               <thead class="bg-gradient-light">
+                                   <th></th>
+                                   <th>Raw Material Name</th>
+                                   <th>Item Code</th>
+                                   <th>Category Name</th>
+                                   <th>Unit Type</th>
+                                   <th>UOM</th>
+                                   <th>Quantity</th>
+                                   <th>ReOrder Level</th>
+                               </thead>
+                           </table>
+                       </div>
+                   </div>
+                   <div class="modal-footer justify-content-between">
+                       <button type="button"
+                               class="btn btn-default btn-sm"
+                               data-dismiss="modal">Close</button>
+                       <button type="button" id="btnpay"
+                               class="btn btn-success btn-sm">Pay</button>
+                   </div>
+               </div>            
+           </div>            
+       </div>
+       <!-- Modal Box End-->
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <!-- Category item content-->
+                            <!-- menu register content-->
                             <div class="card">
-                                <div class="card-body">
+                                
+                                <div class="card-body">                             
+                                    
                                     <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Item Code</label>
-                                            <input id="txtitemCode" type="text" class="form-control" placeholder="Item Code" />
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>Item Name</label>
-                                            <input id="txtitemName" type="text" class="form-control" placeholder="Item name" />
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>Item Category</label>
-                                            <select id="drpitemCategory" class="form-control select2" data-placeholder="Rawfood Category">
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>Unit Type</label>
-                                            <select id="drpunitType" class="form-control select2" data-placeholder="Unit Type">
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-2">
-                                            <label>Unit Of Measure</label>
-                                            <select id="drpUOM" class="form-control select2" data-placeholder="Unit Of Measure">
-                                            </select>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <label>Unit Qty</label>
-                                            <input id="txtunitqty" type="text" class="form-control" data-placeholder="Qty">
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>Re-Order Level</label>
-                                            <input id="txtreorderLevel" type="text" class="form-control" placeholder="Re-Order Level">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>Unit Price</label>
-                                            <input id="txtunitPrice" type="text" class="form-control" placeholder="Unit Price">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label>Selling Price</label>
-                                            <input id="txtsellingPrice" type="text" class="form-control" placeholder="Selling Price">
+                                        <div class="col-md-12">
+                                            <table id="dtMaterialList" class="table table-responsive-lg table-bordered table-separate table-head-custom table-checkable nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Raw Material Name</th>
+                                                        <th>Item Code</th>
+                                                        <th>Category Name</th>
+                                                        <th>Unit Type</th>
+                                                        <th>UOM</th>
+                                                        <th>Quantity</th>
+                                                        <th>ReOrder Level</th>                                                       
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-3">
-                                            <div class="icheck-success d-inline">
-                                                <input type="checkbox" id="chkaddtomenu">
-                                                <label for="chkaddtomenu">ADD TO MENU CARD</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="icheck-warning d-inline">
-                                                <input type="checkbox" id="chkactive">
-                                                <label for="chkactive">Is Active</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button id="btnsave" class="btn btn-primary">Submit</button>
-                                    <button id="btnviewlist" class="btn btn-default float-right">View Stock</button>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -288,16 +298,25 @@
     <script src="/dist/js/js.cookie.min.js"></script>
     <!-- select2-->
     <script src="../../../plugins/select2/js/select2.full.min.js"></script>
+    <!-- datatable-->
+    <script src="../../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
     <!-- AdminLTE for demo purposes -->
     <script src="../../../dist/js/demo.js"></script>
+
+    <script src="../../../dist/js/pages/moment.js"></script>
+
+    <!-- daterange picker-->
+    <script src="../../../plugins/daterangepicker/daterangepicker.js"></script>
 
         <!-- PAGE PLUGINS -->
         <script src="../../../dist/js/pages/navHandler.js"></script>
 
 
     <!-- Custom Script-->
+    <script src="../../../dist/js/pages/listing/rawmateriallist.js" defer data-m="RawMaterialMasterList"></script>
     <script src="../../../dist/js/common.js"></script>
-    <script src="../../../dist/js/pages/rawfoodmaster.js"></script>
 
 </body>
 

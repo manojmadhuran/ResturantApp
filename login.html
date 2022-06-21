@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Resturant | Log in (v2)</title>
+  <title>Resturant Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="dist/css/alt/fonts.googleapis.css">
@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css"/>
+
 </head>
 
 <body class="hold-transition login-page">
@@ -29,7 +31,7 @@
         <div class="card-body">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            <input type="text" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
@@ -57,19 +59,36 @@
   <script src="plugins/jquery-validation/additional-methods.min.js"></script>
   <!-- AdminLTE App -->
   <script src="dist/js/adminlte.min.js"></script>
+  <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script type="text/javascript" src="dist/js/js.cookie.min.js"></script>
+
+  <script src="dist/js/common.js"></script>
   <script>
     $(function () {
+
+      $(document).ready(function(){
+        Cookies.remove('UserID');
+        Cookies.remove('UserName');
+      });
+
       $.validator.setDefaults({
         submitHandler: function () {
-          alert("Form successful submitted!");
-          location.replace('index.html');
+          fire_async_api_get("ResturantAdmin/GetUserLogin?uname="+$("#exampleInputEmail1").val()+"&pwd="+$("#exampleInputPassword1").val()).
+          then((result)=>{  
+            if(result !== null){
+              Cookies.set('UserID',result.UserID); 
+              Cookies.set('UserName',result.UserName);             
+              location.replace('index.html');
+            }else{
+              Swal.fire("error","Invalid User Name or Password", "error");
+            }
+          });
         }
       });
       $('#quickForm').validate({
         rules: {
           email: {
             required: true,
-            email: true,
           },
           password: {
             required: true,
@@ -82,7 +101,6 @@
         messages: {
           email: {
             required: "Please enter a email address",
-            email: "Please enter a vaild email address"
           },
           password: {
             required: "Please provide a password",

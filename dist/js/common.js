@@ -120,21 +120,13 @@ function fire_async_api_upload_file(formdata, urlParam) {
 
 /* Check user is valid user */
 function GetUserDetail() {
-  var useremail = Cookies.get('useremail');
-  var params = {UserEmailAddress: useremail};
-  fire_async_api_post("NPSIReport/GetUserDetail",params).then((response)=>{
-    if(response !== "No Data"){
-      var Jresult = response.result;
-      console.log(Jresult.UserID);
-      Cookies.set('UserID',Jresult.UserID);
-      Cookies.set('UserName',Jresult.UserName);
-      Cookies.set('RoleName',Jresult.RoleName);
-      location.replace('report-submit.html');
-    }else
-    {
-      location.replace('#');
-    }
-  });
+  var userID = Cookies.get('UserID');
+  var userName = Cookies.get('UserName');
+  if(userID === undefined || userID === null){
+    location.replace("/login.html");
+  }else{
+    return userID;
+  }
 }
 
 function setUserInfo(){
@@ -202,3 +194,4 @@ $(document).on('select2:open', '.select2', function (e) {
       document.querySelector(`[aria-controls="select2-${$elem}-results"]`).focus();
   });
 });
+

@@ -26,10 +26,10 @@ var dtble = $("#dtgrn").DataTable({
 });
 
 $(document).ready(function(){
-
+    UserID = GetUserDetail();
     ClearFields();
     MasterData();
-
+    
     GRNID = getUrlParameter('grnid');
     if(GRNID > 0){
         ViewGRNDetail();
@@ -374,7 +374,7 @@ $("#btnnew").on('click', function(){
 });
 
 $("#btnviewlist").on('click', function(){
-    location.replace("./grnlisting.html");
+    location.replace("../listing/grnlisting.html");
 })
 
 

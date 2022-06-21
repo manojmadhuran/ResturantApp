@@ -1,4 +1,4 @@
-var userID = 1;
+var UserID = 1;
 var JsonResult = [];
 var _catID = 0;
 
@@ -19,7 +19,7 @@ var table = $("#dtMenuCat").DataTable({
         { data: "",
         render: function (data, type, row) {
             return (
-                '<button type="button" class="small btn btn-warning">Edit</button>')
+                '<button type="button" class="small btn btn-warning btn-sm">Edit</button>')
             },
         }
     ]
@@ -39,6 +39,7 @@ function View(catID ,catName, isAct){
 }
 
 $(document).ready(function(){
+    UserID = GetUserDetail();
     clearfields();
     getMenuCategory();
 });
